@@ -29,8 +29,12 @@ struct Coins {
   
 }
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+    
+   
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
        
@@ -40,6 +44,7 @@ class ViewController: UIViewController {
                 let json = JSON(jsonValue)
                 for item in json[].arrayValue {
                     print(item["name"].stringValue)
+                    self.model.append(item["name"].stringValue)
                 }
             }
             
@@ -47,10 +52,23 @@ class ViewController: UIViewController {
         
     }
 
+    var model = [String]()
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return model.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let MyCellTable = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "MyCellTable")
+        MyCellTable.textLabel?.text = model[indexPath.row]
+        return (MyCellTable)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
 
 
 }

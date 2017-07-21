@@ -380,6 +380,7 @@
 				8383B8DD1F20F9C600F8BACD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
